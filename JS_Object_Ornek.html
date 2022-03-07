@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Soru:içerisinde 5 tane Kitap bilgisi olan bir diziyi tablo içinde gösteren js kodunu yazınız.
+        //ad,ID,Yazar,fiyat
+
+        class Kitap
+        {
+            constructor(id,ad,yazar,fiyat)
+            {
+                
+                this.KitapID=id;
+                this.KitapAd=ad;
+                this.KitapYazar=yazar;
+                this.KitapFiyat=fiyat+"₺";
+            }
+        }
+        
+        let kitap1=new Kitap(1,"Melekler ve Şeytanlar","Dan Brown",45);
+        let kitap2=new Kitap(8,"Da Vinci'nin Şifresi","Dan Brown",42);
+        let kitap3=new Kitap(15,"Kayıp Sembol","Dan Brown",43);
+        let kitap4=new Kitap(22,"Cehennem","Dan Brown",44);
+        let kitap5=new Kitap(29,"Başlangıç","Dan Brown",41);
+
+        let dizi=[];
+        
+        dizi.push(kitap1);
+        dizi.push(kitap2);
+        dizi.push(kitap3);
+        dizi.push(kitap4);
+        dizi.push(kitap5);
+       
+        
+        function tabloyaYaz(veri)
+        {
+            let elemanSayisi=veri.length;
+
+            document.writeln("<table>");
+
+            document.writeln("<tr>");
+            for(item in veri[0])
+            {
+                document.writeln("<td><center>"+item+"</center></td>")
+            }    
+            document.writeln("</tr>")
+
+            for(let i=0;i<elemanSayisi;i++)
+            {
+                //eski usül ortama bağımlı
+                // for(let j=0;j<1;j++)
+                // {
+                //     document.writeln("<td>"+veri[i].KitapID+"</td>");
+                //     document.writeln("<td>"+veri[i].KitapAd+"</td>");
+                //     document.writeln("<td>"+veri[i].KitapYazar+"</td>");
+                //     document.writeln("<td>"+veri[i].kitapFiyat+"</td>")
+                // }
+                document.writeln("<tr>")
+                
+
+                for(prop in veri[i])
+                {
+                    document.writeln("<td><center>"+veri[i][prop]+"</center></td>")
+                }
+                
+                document.writeln("</tr>")
+            }
+            document.writeln("</table>");
+        }
+        tabloyaYaz(dizi);
+
+        //Soru2:
+
+        
+    </script>
+</body>
+</html>

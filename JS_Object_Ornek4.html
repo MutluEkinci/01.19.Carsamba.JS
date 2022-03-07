@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="kutuphane.js"></script>
+</head>
+<body>
+    <button onclick="minFiyat()">Min</button>
+    <button onclick="">Min</button>
+    <button onclick="">Min</button>
+    <button onclick="">Min</button>
+    <script>
+        class Urunler
+        {
+            constructor(ad,maliyet,fiyat,kategori)
+            {
+                this.UrunAd=ad;
+                this.UrunMaliyet=maliyet;
+                this.UrunFiyat=fiyat;
+            }
+        }
+
+        let yemek1=new Urunler("Makarna",10,22);
+        let yemek2=new Urunler("Mantı",15,32);
+        let yemek3=new Urunler("Tavuk Sote",17,38);
+        let yemek4=new Urunler("Köfte",12,25);
+        let yemek5=new Urunler("Karnıyarık",9,18);
+
+        const yemekler=[];
+        yemekler.push(yemek1);
+        yemekler.push(yemek2);
+        yemekler.push(yemek3);
+        yemekler.push(yemek4);
+        yemekler.push(yemek5);
+        
+        
+        let diziYemek=[];
+        for(let i=0;i<25;i++)
+        {
+            let indis=MinMaxRandom(0,5);
+            diziYemek.push(yemekler[indis]);
+        }
+        tabloyaYaz(diziYemek);
+
+        function minFiyat()
+        {
+            let tablo=document.getElementsByTagName("tbody")[0];
+            for(satir of tablo.childNodes)
+                document.writeln(satir.childNodes[1].innerText);
+            // for(satir of tablo.childNodes)
+            // {
+            //     for(sutun of satir.childNodes)
+            //     {
+            //         document.writeln(sutun.childNodes[2].innerText)
+            //     }
+            // }
+
+        }
+    </script>
+
+</body>
+</html>

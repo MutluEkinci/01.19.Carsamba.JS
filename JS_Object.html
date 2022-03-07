@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Nesneler
+        //1.Yöntem
+
+        var obj=new Object();
+        obj.Ad="Cevdet";
+        obj.Soyad="Korkmaz";
+        obj.Yaz=function(){return this.Ad+" "+this.Soyad;};
+
+        document.writeln(obj.Yaz());
+
+        //2.Yöntem
+        document.writeln("<br/>")
+        var Personel= function(ad,soyad)
+        {   
+            this.Ad=ad;
+            this.Soyad=soyad;
+
+            this.Yaz=function()
+            {
+                document.writeln(this.Ad+" "+ this.Soyad);
+            }
+        }
+
+        let p =new Personel("Selami","Dursun");
+        p.Yaz();
+
+        //3.Yöntem(React için zorunlu)
+
+        class Musteri
+        {
+            constructor(id,ad)
+            {
+                this.MusID=id;
+                this.Ad=ad;
+            }
+
+            Yaz=function()
+            {
+                return this.MusID+ " "+ this.Ad ;
+            }
+        }
+
+        document.writeln("<br/>")
+        let m=new Musteri(123,"Selami Dursun")
+
+        document.writeln(m.Yaz());
+
+        //4.Yöntem
+        document.writeln("<br/>")
+        var kitap=
+        {
+            KitapID:111,
+            KitapAdi:"Melekler ve Şeytanlar",
+            Fiyat:42,
+            Yaz:function()
+            {
+                return this.KitapID + " " + this.KitapAdi + " "+ this.Fiyat+"₺";
+            }
+        }
+        document.writeln(kitap.Yaz());
+
+        document.writeln("<br/>")
+
+        kitap.KitapID=222;
+        kitap.KitapAdi="Da Vinci'nin Şifresi";
+        kitap.Fiyat=45;
+        document.writeln(kitap.Yaz());
+
+
+
+    </script>
+</body>
+</html>

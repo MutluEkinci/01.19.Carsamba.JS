@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="kutuphane.js"></script>
+</head>
+<body>
+    <script>
+        // var dizi=[{ID:1,Ad:"ABC"},{ID:1,Ad:"ABC"},{ID:1,Ad:"ABC"}]
+        // tabloyaYaz(dizi);
+
+        //Soru:Bir oto galerisi için arabaların (ID,plaka,renk,marka) bilgilerini test amaçlı simule edebilmek için bir js uygulaması yazın. Sistem ID,Plaka,Renk ve Marka bilgilerini otomatik olarak oluşturacak(20 değer için).
+        //ID için 3 hane rastgele
+        //plaka 34 abc 3242 rastgele
+        //Renk 5 tane
+        //Marka Rastgele
+
+        function MinMaxRandom(min,max)
+        {
+            let fark=max-min;
+            let rnd=Math.floor(Math.random()*fark);
+
+            return min+rnd;
+        }
+        class Araba
+        {
+            constructor(id,plaka,renk,marka)
+            {
+                this.ArabaID=id;
+                this.ArabaPlaka=plaka;
+                this.ArabaRenk=renk;
+                this.ArabaMarka=marka;
+            }
+        }
+        const alfabe=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","R","S","T","U","V","Y","Z"];
+        const Renk=["Kırmızı","Mavi","Siyah","Lacivert","Gece Mavisi"];
+        const Marka=["BMW","Ferrari","Lamborghini","Mercedes","Tesla"];
+        
+        function plakaOlustur(dizi)
+        {
+            let alfabeSayi=dizi.length;
+            let harf=[];
+            let sayi=[];
+            for(let i=0;i<3;i++)
+            {
+                harf.push(dizi[Math.floor(Math.random()*alfabeSayi)]);
+            }
+            for(let i=0;i<4;i++)
+            {
+                sayi.push(Math.floor(Math.random()*9));
+            }
+            return (Math.floor(Math.random()*8))+""+(Math.floor(Math.random()*9))+" "+ harf[0]+""+harf[1]+""+harf[2]+" "+sayi[0]+""+sayi[1]+""+sayi[2]+""+sayi[3]; 
+        }
+        function getValue(set)
+        {
+            return set[Math.ceil(Math.random(0)*set.length)-1]
+        }
+        function arabaOlustur(sayi)
+        {
+            let arabalar=[];
+            for(let i=0;i<sayi;i++)
+            {
+                arabalar.push(new Araba(MinMaxRandom(100,1000),plakaOlustur(alfabe),getValue(Renk),getValue(Marka)));
+            }
+            tabloyaYaz(arabalar);
+        }
+        arabaOlustur(20);
+    </script>
+</body>
+</html>

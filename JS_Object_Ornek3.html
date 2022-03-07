@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="kutuphane.js"></script>
+</head>
+<body>
+    <script>
+        //Soru:Bir yiyecek firması 5 çeşit ürününü müşterilerin hizmetine sunmaktadır.Günlük yapılan satışları(min 100) ve toplam maliyeti ve kârı hesaplayan js kodunuz yazınız.
+        
+        class Urunler
+        {
+            constructor(ad,maliyet,fiyat)
+            {
+                this.UrunAd=ad;
+                this.UrunMaliyet=maliyet;
+                this.UrunFiyat=fiyat;
+            }
+        }
+        class Satis
+        {
+            constructor(toplamsatis,toplammaliyet,toplamfiyat,kar)
+            {
+                this.ToplamSatis=toplamsatis;
+                this.ToplamMaliyet=toplammaliyet;
+                this.ToplamFiyat=toplamfiyat;
+                this.Kar=toplamfiyat-toplammaliyet;
+            }
+        }
+
+        let yemek1=new Urunler("Makarna",10,22);
+        let yemek2=new Urunler("Mantı",15,32);
+        let yemek3=new Urunler("Tavuk Sote",17,38);
+        let yemek4=new Urunler("Köfte",12,25);
+        let yemek5=new Urunler("Karnıyarık",9,18);
+
+        const yemekler=[];
+        yemekler.push(yemek1);
+        yemekler.push(yemek2);
+        yemekler.push(yemek3);
+        yemekler.push(yemek4);
+        yemekler.push(yemek5);
+
+
+        function Rapor(dizi,sayi)
+        {
+            let toplamSatis=sayi;
+            let toplammaliyet=0;
+            let toplamfiyat=0;
+            let diziSatis=[];
+            let diziYemek=[];
+
+            // const urunegöresatıslar=new Array(0,0,0,0,0);
+            const urunegöresatıslar=new Array();
+            for(let i=0;i<dizi.length;i++)
+            {
+                urunegöresatıslar[i]={ÜrünAdı:dizi[i].UrunAd,Adet:0};
+            }
+
+            for(let i=0;i<sayi;i++)
+            {
+                let indis=MinMaxRandom(0,5)
+                diziYemek.push(dizi[indis])
+                urunegöresatıslar[indis].Adet++;
+            }
+            
+            tabloyaYaz(diziYemek);
+
+            for(let i=0;i<sayi;i++)
+            {
+                toplammaliyet+=diziYemek[i].UrunMaliyet;
+                toplamfiyat+=diziYemek[i].UrunFiyat;
+            }
+
+            let satis=new Satis(sayi,toplammaliyet,toplamfiyat);
+            diziSatis.push(satis);
+            tabloyaYaz(diziSatis);
+
+            tabloyaYaz(urunegöresatıslar);
+        }
+        Rapor(yemekler,MinMaxRandom(100,150));
+
+    </script>
+</body>
+</html>
